@@ -26,7 +26,8 @@ class PortfolioCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $itemEdit = false;
+        return redirect()->route('portfolio-category.index');
     }
 
     /**
@@ -44,9 +45,8 @@ class PortfolioCategoryController extends Controller
         $data = $request->all();
         if (Category::create($data)) {
             return redirect()->back()->with('success', 'Success add category');
-        } else {
-            return redirect()->back()->with('fail', 'Failed add category');
         }
+            return redirect()->back()->with('fail', 'Failed add category');
 
         
     }
@@ -95,6 +95,11 @@ class PortfolioCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Category::findOrFail($id);
+
+        if ($item->delete()) {
+            return redirect()->back()->with('success', 'Success deleted data');
+        }
+        return redirect()->back()->with('fail', 'Failed deleted data');
     }
 }

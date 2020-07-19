@@ -8,7 +8,7 @@
 	<div class="col-xl-6 col-lg-6">
 		<div class="card shadow">
 			<div class="card-body">
-				@if(session('failed'))
+			@if(session('failed'))
 			<div class="alert alert-danger">{{ session('failed') }}</div>
 			@endif
 			<form action="{{ $itemEdit ? route('portfolio-category.update', $itemEdit->id) : route('portfolio-category.store') }}" 
@@ -34,9 +34,11 @@
 	</div>
 	<div class="col-xl-6 col-lg-6">
 		<div class="card shadow mb-4">
+		@if ($itemEdit)
 		<div class="card-header py-3">
-			<a href="{{ url('general/city/create') }}" class="btn btn-success">+ add new</a>
+			<a href="{{ route('portfolio-category.create') }}" class="btn btn-success">+ add new</a>
 		</div>
+		@endif
 	    <div class="card-body">
 	        <div class="table-responsive">
 	                @if(session('success'))
@@ -64,9 +66,9 @@
 	                      <td>{{ $item->name }}</td>
 	                      <td align="right">
 	                        <a href="{{ route('portfolio-category.edit',$item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-	                        <form action="city/delete" method="post" class="d-inline form-del">
+	                        <form action="{{ route('portfolio-category.destroy', $item->id) }}" method="post" class="d-inline">
 	                          @csrf
-	                          <input type="hidden" name="id" value="{{ 1 }}">
+	                          @method('DELETE')
 	                          <input type="submit" class="btn btn-danger btn-sm delete" value="Delete"></input>
 	                        </form>
 	                      </td>

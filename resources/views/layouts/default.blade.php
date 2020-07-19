@@ -65,8 +65,9 @@
 
 
   <!-- Bootstrap core JavaScript-->
+  @stack('before-script')
   @include('includes.script')
-
+  @stack('after-script')
     <script>
     $('.delete').on('click', function(e) {
       e.preventDefault();
