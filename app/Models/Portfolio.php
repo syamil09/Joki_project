@@ -12,4 +12,9 @@ class Portfolio extends Model
     {
     	return $this->belongsTo('App\Models\PortfolioCategory', 'category_id');
     }
+
+    public function getImageAttribute($value)
+    {
+    	return url('storage/'.$value);
+    }
 }

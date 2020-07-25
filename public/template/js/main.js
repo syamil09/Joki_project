@@ -106,7 +106,7 @@
     $('#portfolio-flters li').on( 'click', function() {
       $("#portfolio-flters li").removeClass('filter-active');
       $(this).addClass('filter-active');
-  
+      console.log(this);
       portfolioIsotope.isotope({ filter: $(this).data('filter') });
     });
   });

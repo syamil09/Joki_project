@@ -8,7 +8,7 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="{{ asset('template/template/img/favicon.png') }}') }}" rel="icon">
+  <link href="{{ asset('template/template/img/favicon.png') }}" rel="icon">
   <link href="{{ asset('template/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -335,154 +335,32 @@
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
+              <!-- <li data-filter=".filter-app">App</li>
               <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
+              <li data-filter=".filter-web">Web</li> -->
+              @foreach($item['categories'] as $category)
+              <li data-filter=".filter-{{ $category->name }}">{{ $category->name }}</li>
+              @endforeach
             </ul>
           </div>
         </div>
 
         <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          
+          @foreach($item['portfolios'] as $portfolio)
+          <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $portfolio->category->name }}" data-wow-delay="0.1s">
             <div class="portfolio-wrap">
-              <img src="{{ asset('template/img/portfolio/app1.jpg') }}" class="img-fluid" alt="">
+              <img src="{{ $portfolio->image }}" class="img-fluid" alt="image">
               <div class="portfolio-info">
-                <h4><a href="#">App 1</a></h4>
-                <p>App</p>
+                <h4><a href="#">{{ $portfolio->title }}</a></h4>
                 <div>
-                  <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="{{ asset('img/portfolio/web3.jpg') }}" class="link-preview" data-lightbox="portfolio" data-title="{{ $portfolio->title }}" title="Preview"><i class="ion ion-eye"></i></a>
                   <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <img src="{{ asset('template/img/portfolio/web3.jpg') }}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Web 3</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum facere earum corporis sit at maxime a itaque perspiciatis necessitatibus quod aperiam quia error fuga, cupiditate rem veniam. Facilis, ipsum, quia.</p>
-                <div>
-                  <a href="{{ asset('img/portfolio/web3.jpg') }}" class="link-preview" data-lightbox="portfolio" data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <img src="{{ asset('img/portfolio/app2.jpg') }}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">App 2</a></h4>
-                <p>App</p>
-                <div>
-                  <a href="{{ asset('img/portfolio/app2.jpg') }}" class="link-preview" data-lightbox="portfolio" data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{{ asset('img/portfolio/card2.jpg') }}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Card 2</a></h4>
-                <p>Card</p>
-                <div>
-                  <a href="img/portfolio/card2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/web2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Web 2</a></h4>
-                <p>Web</p>
-                <div>
-                  <a href="img/portfolio/web2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/app3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">App 3</a></h4>
-                <p>App</p>
-                <div>
-                  <a href="img/portfolio/app3.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/card1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Card 1</a></h4>
-                <p>Card</p>
-                <div>
-                  <a href="img/portfolio/card1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/card3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Card 3</a></h4>
-                <p>Card</p>
-                <div>
-                  <a href="img/portfolio/card3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/web1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Web 1</a></h4>
-                <p>Web</p>
-                <div>
-                  <a href="img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-           <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <img src="img/portfolio/web1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Web 1</a></h4>
-                <p>Web</p>
-                <div>
-                  <a href="img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
 
         </div>
 
@@ -860,7 +738,7 @@
   <!-- <div id="preloader"></div> -->
 
   <!-- JavaScript Libraries -->
-  <script src="{{ asset('template/lib/jquery/jquery.min.js') }}') }}"></script>
+  <script src="{{ asset('template/lib/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('template/lib/jquery/jquery-migrate.min.js') }}"></script>
   <script src="{{ asset('template/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('template/lib/easing/easing.min.js') }}"></script>
