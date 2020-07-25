@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Portfolio extends Model
 {
-    $guarded = [];
+    protected $guarded = [];
 
     public function category()
     {
-    	return $this->belongsTo('App\Models\PortfolioCategories', 'category_id');
+    	return $this->belongsTo('App\Models\PortfolioCategory', 'category_id');
     }
 }

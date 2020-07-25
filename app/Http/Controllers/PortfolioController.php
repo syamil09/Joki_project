@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PortfolioCategory as Category;
+use App\Models\Portfolio;
+use App\Http\Requests\PortfolioRequest;
 
 class PortfolioController extends Controller
 {
@@ -13,7 +16,9 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        $items = Portfolio::with('category')->get();
+
+        return view('pages.portfolio.index', compact('items'));
     }
 
     /**
@@ -23,7 +28,9 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('pages.portfolio.create', compact('categories'));
     }
 
     /**
@@ -32,9 +39,16 @@ class PortfolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PortfolioRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['image'] = $request->file('image')
+                                 ->store('portfolio', 'public');
+
+        Portfolio::create($data);
+
+        return redirect()->route('portfolio.index')->with('success', 'Success added data');
+
     }
 
     /**
@@ -56,7 +70,10 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Portfolio::findOrfail($id);
+        $categories = Category::all();
+
+        return view('pages.portfolio.edit', compact('item','categories'));
     }
 
     /**
@@ -68,7 +85,23 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'category_id' => 'required|integer|exists:portfolio_categories,id',
+            'image' => $request->old_img ? '' : 'required|image',
+            'description' => 'required'
+        ]);
+
+        $data = $request->except('old_img');
+        $data['image'] = $request->hasFile('image') ? $request->file('image')
+                                                              ->store('portfolio', 'public') 
+                                                    : $request->old_img;
+        $update = Portfolio::find($id)->update($data);
+
+        if ($update) {
+            return redirect()->route('portfolio.index')->with('success', 'Data Updated');
+        }
+            return redirect()->route('portfolio.index')->with('failed', 'Data Doesn\'t Updated');
     }
 
     /**
@@ -79,6 +112,9 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Portfolio::findOrFail($id);
+        $item->delete();
+
+        return redirect()->back()->with('success', 'Data deleted');
     }
 }
