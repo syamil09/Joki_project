@@ -9,6 +9,10 @@
 # General
 --------------------------------------------------------------*/
 
+:root{
+  --main:#007bff;
+}
+
 body {
   background: #fff;
   color: #444;
@@ -173,7 +177,7 @@ h6 {
 #intro {
   width: 100%;
   position: relative;
-  background: url("../img/intro-bg.png") center bottom no-repeat;
+  /*background: url("../img/intro-bg.png") center bottom no-repeat;*/
   background-size: cover;
   padding: 200px 0 120px 0;
 }
@@ -189,7 +193,7 @@ h6 {
 }
 
 #intro .intro-info h2 {
-  color: #fff;
+  /*color: #fff;*/
   margin-bottom: 40px;
   font-size: 48px;
   font-weight: 700;
@@ -211,7 +215,7 @@ h6 {
   border-radius: 50px;
   transition: 0.5s;
   margin: 0 20px 20px 0;
-  color: #fff;
+  /*color: #fff;*/
 }
 
 #intro .intro-info .btn-get-started {
@@ -221,13 +225,13 @@ h6 {
 }
 
 #intro .intro-info .btn-get-started:hover {
-  background: none;
+ /* background: none;
   border-color: #fff;
-  color: #fff;
+  color: #fff;*/
 }
 
 #intro .intro-info .btn-services {
-  border: 2px solid #fff;
+  border: 2px solid var(--main);
 }
 
 #intro .intro-info .btn-services:hover {
@@ -590,9 +594,10 @@ h6 {
 }
 
 #services .box {
-  padding: 30px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
+  border: none;
   border-radius: 10px;
   margin: 0 10px 40px 10px;
   background: #fff;
@@ -618,10 +623,10 @@ h6 {
 }
 
 #services .title {
-  margin-left: 40px;
+  /*margin-left: 40px;*/
   font-weight: 700;
   margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 #services .title a {
@@ -634,7 +639,7 @@ h6 {
 
 #services .description {
   font-size: 14px;
-  margin-left: 40px;
+  /*margin-left: 40px;*/
   line-height: 24px;
   margin-bottom: 0;
 }

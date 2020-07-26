@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NewBiz Bootstrap Template</title>
+  <title>Joki Project</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -27,12 +27,6 @@
   <!-- Main Stylesheet File -->
   <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
 
-  <!-- =======================================================
-    Theme Name: NewBiz
-    Theme URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -87,7 +81,7 @@
     <div class="container">
 
       <div class="intro-img">
-        <img src="img/intro-img.svg" alt="" class="img-fluid">
+        <img src="{{ asset('template/img/intro-img.svg') }}" alt="" class="img-fluid">
       </div>
 
       <div class="intro-info">
@@ -142,43 +136,8 @@
           </div>
 
           <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-            <img src="img/about-img.svg" class="img-fluid" alt="">
+            <img src="{{ asset('template/img/about-img.svg') }}" class="img-fluid" alt="">
           </div>
-        </div>
-
-        <div class="row about-extra">
-          <div class="col-lg-6 wow fadeInUp">
-            <img src="img/about-extra-1.svg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
-            <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
-            <p>
-              Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe. Numquam mollitia recusandae non ad at et a.
-            </p>
-            <p>
-              Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti. Odit qui asperiores ea corporis deserunt veritatis quidem expedita perferendis. Qui rerum eligendi ex doloribus quia sit. Porro rerum eum eum.
-            </p>
-          </div>
-        </div>
-
-        <div class="row about-extra">
-          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
-            <img src="{{ asset('img/about-extra-2.svg') }}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
-            <h4>Neque saepe temporibus repellat ea ipsum et. Id vel et quia tempora facere reprehenderit.</h4>
-            <p>
-             Delectus alias ut incidunt delectus nam placeat in consequatur. Sed cupiditate quia ea quis. Voluptas nemo qui aut distinctio. Cumque fugit earum est quam officiis numquam. Ducimus corporis autem at blanditiis beatae incidunt sunt. 
-            </p>
-            <p>
-              Voluptas saepe natus quidem blanditiis. Non sunt impedit voluptas mollitia beatae. Qui esse molestias. Laudantium libero nisi vitae debitis. Dolorem cupiditate est perferendis iusto.
-            </p>
-            <p>
-              Eum quia in. Magni quas ipsum a. Quis ex voluptatem inventore sint quia modi. Numquam est aut fuga mollitia exercitationem nam accusantium provident quia.
-            </p>
-          </div>
-          
         </div>
 
       </div>
@@ -195,7 +154,7 @@
           <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
         </header>
 
-        <div class="row">
+      <!--<div class="row">
 
           <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
             <div class="box">
@@ -242,6 +201,19 @@
             </div>
           </div>
 
+        </div> -->
+        <div class="row d-flex justify-content-center">
+          @for ($i = 0; $i < 3; $i++)
+          <div class="col-md-4">
+            <div class="card box text-center">
+              <img src="{{ asset('template/img/intro-img.svg') }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h4 class="title">Web</h4>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates soluta ullam saepe hic possimus culpa ratione</p>
+              </div>
+            </div>
+          </div>
+          @endfor
         </div>
 
       </div>
