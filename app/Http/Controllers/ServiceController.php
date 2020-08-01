@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
-use App\Models\Service;
+use App\Http\Requests\ServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -27,7 +27,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.service.create');
     }
 
     /**
@@ -36,9 +36,14 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['image'] = $request->file('image')
+                                 ->store('service', 'public');
+        Service::create($data);
+
+        return redirect()->route('service.index')->withSuccess('Data Service Added');
     }
 
     /**
@@ -60,7 +65,9 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        $item = $service;
+
+        return view('pages.service.edit', compact('item'));
     }
 
     /**
@@ -70,9 +77,16 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(ServiceRequest $request, Service $service)
     {
-        //
+        $data = $request->except('old_img');
+        $data['image'] = $request->hasFile('image') ? $request->file('image')
+                                                              ->store('service',  'public')
+                                                    : $request->old_img;
+
+        $service->update($data);
+        
+        return redirect()->route('service.index')->withSuccess('Data Service Updated');  
     }
 
     /**
@@ -83,6 +97,8 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+
+        return redirect()->back()->withSuccess('Data Service Deleted');
     }
 }

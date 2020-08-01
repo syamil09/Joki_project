@@ -27,7 +27,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      <li class="nav-item wrap-menu">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Section</span>
@@ -36,26 +36,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
         <!--<h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item {{ Request::is('cms/hero*') ? 'active' : '' }}" href="{{ route('hero.index') }}">Hero</a>
-            <a class="collapse-item {{ Request::is('cms/hero*') ? 'active' : '' }}" href="{{ route('about.index') }}">About Us</a>
-            <a class="collapse-item" href="cards.html">Services</a>
+            <a class="collapse-item {{ Request::is('cms/about*') ? 'active' : '' }}" href="{{ route('about.index') }}">About Us</a>
+            <a class="collapse-item {{ Request::is('cms/service*') ? 'active' : '' }}" href="{{ route('service.index') }}">Services</a>
             <a class="collapse-item" href="cards.html">Team</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
           </div>
         </div>
       </li>
@@ -82,3 +65,22 @@
       </div>
 
     </ul>
+
+    @push('after-script')
+    <script>
+      $(document).ready(function () {
+
+        $('.wrap-menu').each(function(idx,item) {
+
+          var active_menu = $(item).find('.active');
+          if (active_menu.length > 0) {
+            $(item).find('.collapse').addClass('show');
+          }
+          console.log(active_menu);
+        });
+        
+
+      });
+
+    </script>
+    @endpush
