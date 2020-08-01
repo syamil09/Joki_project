@@ -49,20 +49,25 @@ class LandingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function about()
+    public function aboutGet()
     {
-        //
+        $item = Landing::select('id', 'about_us')->first();
+
+        return view('pages.landing.about', compact('item'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function aboutUpdate(Request $request, $id)
     {
-        //
+        $request->validate([
+            'about_us' => 'required'
+        ]);
+
+        $data = $request->only('about_us');
+
+        Landing::findOrFail($id)->updated($data);
+
+        return redirect()->route('about.index')->with('success' ,'Data About Updated');
     }
 
     /**

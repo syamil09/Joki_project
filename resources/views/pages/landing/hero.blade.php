@@ -45,7 +45,7 @@
 		</div>
 				
 		<div class="text-center mt-3">
-				<button type="submit" class="btn btn-primary">Add</button>
+				<button type="submit" class="btn btn-primary">Save</button>
 		</div>
 		</form>
 	</div>
