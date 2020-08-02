@@ -34,7 +34,7 @@
 	                  	@forelse ($items as $item)
 	                    <tr>
 	                      <td>
-							<img src="{{ url('storage/'.$item->image) }}" alt="Image" width="100px">
+							<img src="{{ $item->image }}" alt="Image" width="100px">
 	                      </td>
 	                      <td>{{ $item->title }}</td>
 	                      <td>{{ $item->description }}</td>

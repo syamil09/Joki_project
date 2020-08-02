@@ -66,7 +66,7 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         $item = $service;
-
+        
         return view('pages.service.edit', compact('item'));
     }
 
@@ -80,9 +80,10 @@ class ServiceController extends Controller
     public function update(ServiceRequest $request, Service $service)
     {
         $data = $request->except('old_img');
-        $data['image'] = $request->hasFile('image') ? $request->file('image')
-                                                              ->store('service',  'public')
-                                                    : $request->old_img;
+        $data['image'] = $request->hasFile('image') 
+                            ? $request->file('image')
+                                      ->store('service',  'public')
+                            : $request->old_img;
 
         $service->update($data);
         

@@ -8,8 +8,9 @@ class Service extends Model
 {
     protected $guarded = [];
 
-    // public function getImageAttribute($val)
-    // {
-    // 	return url('storage/'.$val);
-    // }
+    public function getImageAttribute($value)
+    {
+    	return url('storage/'.$value);
+    }
+
 }

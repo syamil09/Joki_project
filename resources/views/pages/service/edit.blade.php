@@ -34,14 +34,14 @@
 					accept="image/*" 
 					class="form-control @error('image')is-invalid @enderror" 
 					value="{{ old('image') ?? $item->image }}">
-			<input type="hidden" name="old_img" value="{{ $item->image }}">
+			<input type="hidden" name="old_img" value="{{ $item->getRawOriginal('image') }}">
 			@error('image')
 			<div class="invalid-feedback">{{$message}}</div>
 			@enderror
 		</div>
 				
 		<div class="text-center mt-3">
-				<button type="submit" class="btn btn-primary">Save</button>
+			<button type="submit" class="btn btn-primary col-12">Save</button>
 		</div>
 		</form>
 	</div>
