@@ -38,7 +38,7 @@
             <a class="collapse-item {{ Request::is('cms/hero*') ? 'active' : '' }}" href="{{ route('hero.index') }}">Hero</a>
             <a class="collapse-item {{ Request::is('cms/about*') ? 'active' : '' }}" href="{{ route('about.index') }}">About Us</a>
             <a class="collapse-item {{ Request::is('cms/service*') ? 'active' : '' }}" href="{{ route('service.index') }}">Services</a>
-            <a class="collapse-item" href="cards.html">Team</a>
+            <a class="collapse-item {{ Request::is('cms/team*') ? 'active' : '' }}" href="{{ route('team.index') }}">Team</a>
           </div>
         </div>
       </li>

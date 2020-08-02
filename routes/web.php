@@ -26,6 +26,7 @@ Route::group(['prefix' => 'cms', 'middleware' => 'auth'],function() {
 	Route::resource('portfolio-category', 'PortfolioCategoryController');
 	Route::resource('portfolio', 'PortfolioController');
 	Route::resource('service', 'ServiceController');
+	Route::resource('team', 'TeamController');
 
 	Route::get('hero', 'LandingController@heroGet')->name('hero.index');
 	Route::put('hero/{id}', 'LandingController@heroUpdate')->name('hero.update');
